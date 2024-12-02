@@ -159,9 +159,7 @@ struct cmd_results *cmd_workspace(int argc, char **argv) {
 					"Unable to allocate workspace output");
 		}
 
-		for (int i = wsc->outputs->length - 1; i >= 0; --i) {
-			list_del(wsc->outputs, i);
-		}
+		list_free_items_and_clear(wsc->outputs);
 
 		for (int i = output_location + 1; i < argc; ++i) {
 			list_add(wsc->outputs, strdup(argv[i]));

@@ -158,3 +158,10 @@ void list_free_items_and_destroy(list_t *list) {
 	list_free(list);
 }
 
+void list_free_items_and_clear(list_t *list) {
+	for (int i = 0; i < list->length; ++i) {
+		free(list->items[i]);
+	}
+
+	list->length = 0;
+}

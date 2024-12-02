@@ -32,4 +32,10 @@ void list_move_to_end(list_t *list, void *item);
  * complicated deallocation code.
  */
 void list_free_items_and_destroy(list_t *list);
+
+/* Calls `free` for each item in the list, and empties the list.
+ * Do not use this to free lists of primitives or items that require more
+ * complicated deallocation code.
+ */
+void list_free_items_and_clear(list_t *list);
 #endif
