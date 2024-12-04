@@ -153,7 +153,11 @@ static void unmanaged_handle_associate(struct wl_listener *listener, void *data)
 static void unmanaged_handle_dissociate(struct wl_listener *listener, void *data) {
 	struct sway_xwayland_unmanaged *surface =
 		wl_container_of(listener, surface, dissociate);
+	// TODO: Figure out why these lists contain null pointers when they're not expected to
+	wl_list_init(&surface->map.link);
 	wl_list_remove(&surface->map.link);
+
+	wl_list_init(&surface->unmap.link);
 	wl_list_remove(&surface->unmap.link);
 }
 
